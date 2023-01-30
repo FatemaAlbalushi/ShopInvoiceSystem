@@ -1,123 +1,114 @@
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
-
 /**
- * @author LAP-10
- *
+ * ShopItem class represents a single item in a shop with its id, name, unit
+ * price, and quantity.
  */
 public class ShopItem {
-	
-	  private int itemId;
-	  private String itemName;
-	  private double unitPrice;
-	  private int quantity;
-	 
 
+	/**
+	 * An integer value to store the id of the item
+	 */
+	private int itemId;
+	/**
+	 * A string value to store the name of the item
+	 */
+	private String itemName;
+	/**
+	 * A double value to store the unit price of the item
+	 */
+	private double unitPrice;
+	/**
+	 * An integer value to store the quantity of the item
+	 */
+	private int quantity;
+
+	/**
+	 * Constructor that initializes all the fields of the class
+	 * 
+	 * @param itemId    The id of the item
+	 * @param itemName  The name of the item
+	 * @param unitPrice The unit price of the item
+	 * @param quantity  The quantity of the item
+	 */
 	public ShopItem(int itemId, String itemName, double unitPrice, int quantity) {
-	  
+
 		this.itemId = itemId;
 		this.itemName = itemName;
 		this.unitPrice = unitPrice;
 		this.quantity = quantity;
-		
+
 	}
 
+	/**
+	 * Gets the id of the item
+	 * 
+	 * @return The id of the item
+	 */
 	public int getitemId() {
 		return itemId;
 	}
 
+	/**
+	 * Sets the id of the item
+	 * 
+	 * @param itemId The new id of the item
+	 */
 	public void setId(int itemId) {
 		this.itemId = itemId;
 	}
 
+	/**
+	 * Gets the name of the item
+	 * 
+	 * @return The name of the item
+	 */
 	public String getItemName() {
 		return itemName;
 	}
 
+	/**
+	 * Sets the name of the item
+	 * 
+	 * @param name The new name of the item
+	 */
 	public void setName(String name) {
 		this.itemName = name;
 	}
 
+	/**
+	 * Gets the unit price of the item
+	 * 
+	 * @return The unit price of the item
+	 */
 	public double getUnitPrice() {
 		return unitPrice;
 	}
 
+	/**
+	 * Sets the unit price of the item
+	 * 
+	 * @param newPrice The new unit price of the item
+	 */
 	public void setUnitPrice(double newPrice) {
 		this.unitPrice = newPrice;
 	}
 
+	/**
+	 * Gets the quantity of the item
+	 * 
+	 * @return The quantity of the item
+	 */
 	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	
+	/**
+	 * Calculates the total amount for the item by multiplying the unit price with
+	 * the quantity.
+	 * 
+	 * @return The total amount for the item
+	 */
 	public double getQtyAmount() {
 		return unitPrice * quantity;
 	}
-	
-	
-	  public void deleteItem(int itemId) {
-		    Gson gson = new Gson();
-		    java.lang.reflect.Type type = new TypeToken<List<ShopItem>>(){}.getType();
-		    try (FileReader reader = new FileReader("items.json")) {
-		      List<ShopItem> items = gson.fromJson(reader, type);
-		      List<ShopItem> itemsToSave = new ArrayList<>();
-		      for (ShopItem item : items) {
-		        if (item.getitemId() != itemId) {
-		          itemsToSave.add(item);
-		        }
-		      }
-		      try (FileWriter writer = new FileWriter("items.json")) {
-		        gson.toJson(itemsToSave, writer);
-		      }
-		    } catch (IOException e) {
-		      e.printStackTrace();
-		    }
-		  }
 
-	  public void changeItemPrice(int itemId, double newPrice) {
-		    Gson gson = new Gson();
-		    Type type = new TypeToken<List<ShopItem>>(){}.getType();
-		    try (FileReader reader = new FileReader("items.json")) {
-		      List<ShopItem> items = gson.fromJson(reader, type);
-		      for (ShopItem item : items) {
-		        if (item.getitemId() == itemId) {
-		          item.setUnitPrice(newPrice);
-		          break;
-		        }
-		      }
-		      try (FileWriter writer = new FileWriter("items.json")) {
-		        gson.toJson(items, writer);
-		      }
-		    } catch (IOException e) {
-		      e.printStackTrace();
-		    }
-		  }
-
-	
-	
-	 public void reportAllItems() {
-		    Gson gson = new Gson();
-		    Type type = new TypeToken<List<ShopItem>>(){}.getType();
-		    try (FileReader reader = new FileReader("items.json")) {
-		      List<ShopItem> items = gson.fromJson(reader, type);
-		      System.out.println("Item ID\tItem Name\tUnit Price\tQuantity\tQty Amount");
-		      for (ShopItem item : items) {
-		        System.out.println(item.getitemId() + "\t" + item.getItemName() + "\t" + item.getUnitPrice() + "\t" + item.getQuantity() + "\t" + item.getQtyAmount());
-		      }
-		    } catch (IOException e) {
-		      e.printStackTrace();
-		    }
-		  }
 }
