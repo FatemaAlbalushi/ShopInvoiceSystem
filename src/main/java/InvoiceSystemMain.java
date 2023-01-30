@@ -56,14 +56,26 @@ public class InvoiceSystemMain {
         do {
         	patentMenu.printMenuitem();
             System.out.print("Enter your Choice : ");
-            choice = Integer.parseInt(userInput.nextLine());
+            choice = 0;
+            try {
+                choice = Integer.parseInt(userInput.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Enter a number.");
+                continue;
+            }
             switch (choice) {
             case 1:
                 do {
                     System.out.println("Shop Settings");
                     patentMenu.getMenuItem(1).menu.printMenuitem();
-                    System.out.print("Enter your Choice : ");
-                    option = Integer.parseInt(userInput.nextLine());
+                    System.out.print("Enter your option : ");
+                    option = 0;
+                    try {
+                    	option = Integer.parseInt(userInput.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Enter a number.");
+                        continue;
+                    }
                     switch (option) {
                     case 1:
                         break;
