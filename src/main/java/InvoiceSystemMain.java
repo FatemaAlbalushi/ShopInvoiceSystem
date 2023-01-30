@@ -1,5 +1,3 @@
-import java.lang.StackWalker.Option;
-import java.util.Date;
 import java.util.Scanner;
 
 
@@ -15,10 +13,13 @@ public class InvoiceSystemMain {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		Shop shop= new Shop("grocerie Shop", "91234567", "24412345", "grocerieShop@gamil.com", "grocerie.com");
+		Invoice invoice = null;
 		System.out.println("Application Main Menu:");
 		
 		
-		ShopItem item = new ShopItem();
+		//ShopItem item = new ShopItem();
 		
 		Menu subMenuAdminAction1 = new Menu();
 		subMenuAdminAction1.addMenuitem(new MenuItem(1, "Load Data"));
@@ -101,16 +102,7 @@ public class InvoiceSystemMain {
                     option = Integer.parseInt(userInput.nextLine());
                     switch (option) {
 		            case 1:
-	            	System.out.println("Enter item id: ");
-	                int itemId = userInput.nextInt();
-	                System.out.println("Enter item name: ");
-	                String itemName = userInput.next();
-	                System.out.println("Enter item price: ");
-	                double itemPrice = userInput.nextDouble();
-	                System.out.println("Enter item quantity: ");
-	                int itemQuantity = userInput.nextInt();
-	              //  item.addItem(itemId, itemName, itemPrice, itemQuantity);
-	            	//ShopItem.addItem(item);
+	            	
 	                break;
 	            case 2:
 	            //	ShopItem.deleteItem();
@@ -132,9 +124,7 @@ public class InvoiceSystemMain {
                 break;
             case 3:
                 System.out.println("Create New Invoice");
-                Date date = new Date();
-                Invoice invoice = new Invoice(1, date);
-                invoice.saveToFile();
+              //  Shop.addInvoice(null);
                 break;
             case 4:
                 System.out.println("Report - Statistics");

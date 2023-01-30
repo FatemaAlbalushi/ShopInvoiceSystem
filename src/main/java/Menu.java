@@ -6,7 +6,8 @@ import java.util.ArrayList;
  */
 public class Menu {
 	String title; // Title of the menu
-	ArrayList<MenuItem> listOfMenuItems; // ArrayList to store the menu items
+	private ArrayList<MenuItem> listOfMenuItems = new ArrayList<>();// ArrayList to store the menu items
+
 
 	/**
 	 * Returns the title of the menu.
