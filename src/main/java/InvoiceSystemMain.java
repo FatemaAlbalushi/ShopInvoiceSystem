@@ -21,42 +21,42 @@ public class InvoiceSystemMain {
 		
 		//ShopItem item = new ShopItem();
 		
-		Menu subMenuAdminAction1 = new Menu();
-		subMenuAdminAction1.addMenuitem(new MenuItem(1, "Load Data"));
-		subMenuAdminAction1.addMenuitem(new MenuItem(2, "Set Shop Name"));
-		subMenuAdminAction1.addMenuitem(new MenuItem(3, "Set Invoice Header"));
-		subMenuAdminAction1.addMenuitem(new MenuItem(4, "Go Back"));
+		Menu ShopSettingssubMenu = new Menu();
+		ShopSettingssubMenu.addMenuitem(new MenuItem(1, "Load Data"));
+		ShopSettingssubMenu.addMenuitem(new MenuItem(2, "Set Shop Name"));
+		ShopSettingssubMenu.addMenuitem(new MenuItem(3, "Set Invoice Header"));
+		ShopSettingssubMenu.addMenuitem(new MenuItem(4, "Go Back"));
 		
-		Menu subMenuAdminAction2 = new Menu();
-		subMenuAdminAction2.addMenuitem(new MenuItem(1, "Add Items"));
-		subMenuAdminAction2.addMenuitem(new MenuItem(2, "Delete Items"));
-		subMenuAdminAction2.addMenuitem(new MenuItem(3, "Change Item Price"));
-		subMenuAdminAction2.addMenuitem(new MenuItem(4, "Report All Items"));
-		subMenuAdminAction2.addMenuitem(new MenuItem(5, "Go Back"));
+		Menu ManageShopItemssubMenu = new Menu();
+		ManageShopItemssubMenu.addMenuitem(new MenuItem(1, "Add Items"));
+		ManageShopItemssubMenu.addMenuitem(new MenuItem(2, "Delete Items"));
+		ManageShopItemssubMenu.addMenuitem(new MenuItem(3, "Change Item Price"));
+		ManageShopItemssubMenu.addMenuitem(new MenuItem(4, "Report All Items"));
+		ManageShopItemssubMenu.addMenuitem(new MenuItem(5, "Go Back"));
 		
-		MenuItem adminActionMenu1= new MenuItem(1, "Shop Settings");
-		adminActionMenu1.marktheItemAsMenu(subMenuAdminAction1);
+		MenuItem ShopSettingsMenu= new MenuItem(1, "Shop Settings");
+		ShopSettingsMenu.marktheItemAsMenu(ShopSettingssubMenu);
 		
-		MenuItem adminActionMenu2= new MenuItem(2, "Manage Shop Items");
-		adminActionMenu2.marktheItemAsMenu(subMenuAdminAction2);
+		MenuItem ManageShopItemsMenu= new MenuItem(2, "Manage Shop Items");
+		ManageShopItemsMenu.marktheItemAsMenu(ManageShopItemssubMenu);
 		
 		
-        Menu patentMenu = new Menu();
-        patentMenu.addMenuitem(adminActionMenu1);
-        patentMenu.addMenuitem(adminActionMenu2);
-        patentMenu.addMenuitem(new MenuItem(3, "Create New Invoice"));
-        patentMenu.addMenuitem(new MenuItem(4, "Report: Statistics"));
-        patentMenu.addMenuitem(new MenuItem(5, "Report: All Invoices"));
-        patentMenu.addMenuitem(new MenuItem(6, "Search for Invoice"));
-        patentMenu.addMenuitem(new MenuItem(7, "Program Statistics "));
-        patentMenu.addMenuitem(new MenuItem(8, "Exit"));
+        Menu ApplicationMainMenu = new Menu();
+        ApplicationMainMenu.addMenuitem(ShopSettingsMenu);
+        ApplicationMainMenu.addMenuitem(ManageShopItemsMenu);
+        ApplicationMainMenu.addMenuitem(new MenuItem(3, "Create New Invoice"));
+        ApplicationMainMenu.addMenuitem(new MenuItem(4, "Report: Statistics"));
+        ApplicationMainMenu.addMenuitem(new MenuItem(5, "Report: All Invoices"));
+        ApplicationMainMenu.addMenuitem(new MenuItem(6, "Search for Invoice"));
+        ApplicationMainMenu.addMenuitem(new MenuItem(7, "Program Statistics "));
+        ApplicationMainMenu.addMenuitem(new MenuItem(8, "Exit"));
         //patentMenu.printMenuitem();
         
         Integer choice;
         Integer option;
         Scanner userInput = new Scanner(System.in);
         do {
-        	patentMenu.printMenuitem();
+        	ApplicationMainMenu.printMenuitem();
             System.out.print("Enter your Choice : ");
             choice = 0;
             try {
@@ -69,7 +69,7 @@ public class InvoiceSystemMain {
             case 1:
                 do {
                     System.out.println("Shop Settings");
-                    patentMenu.getMenuItem(1).menu.printMenuitem();
+                    ApplicationMainMenu.getMenuItem(1).menu.printMenuitem();
                     System.out.print("Enter your option : ");
                     option = 0;
                     try {
@@ -97,7 +97,7 @@ public class InvoiceSystemMain {
             case 2:
                 do {
                     System.out.println("Shop Settings");
-                    patentMenu.getMenuItem(2).menu.printMenuitem();
+                    ApplicationMainMenu.getMenuItem(2).menu.printMenuitem();
                     System.out.print("Enter your Choice : ");
                     option = Integer.parseInt(userInput.nextLine());
                     switch (option) {
