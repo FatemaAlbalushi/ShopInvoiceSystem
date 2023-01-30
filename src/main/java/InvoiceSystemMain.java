@@ -139,8 +139,22 @@ public class InvoiceSystemMain {
                 System.out.println("Program Statistics");
                 break;
             case 8:
-                System.out.println("EXITING PROGRAM...");
-                break;
+            	while (choice == 8) {
+                    System.out.print("Are you sure you want to exit? (y/n) ");
+                    String confirm = userInput.nextLine().toLowerCase();
+                    if (confirm.equals("y")) {
+                      System.out.println("User input: " + confirm);
+                      System.out.println("Exiting program...");
+                      break;
+                    } else if (confirm.equals("n")) {
+                      System.out.println("User input: " + confirm);
+                      choice = 0;
+                      break;
+                    } else {
+                      System.out.println("Invalid choice. Try again.");
+                    }
+                  }
+            	break;
             default:
                 System.out.println("Invalid option!!!");
                 break;
