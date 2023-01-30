@@ -19,15 +19,15 @@ public class ShopItem {
 	  private String itemName;
 	  private double unitPrice;
 	  private int quantity;
-	  private double qtyAmount;
+	 
 
-	public ShopItem() {
-	  //int itemId, String itemName, double unitPrice, int quantity, double qtyAmount) {
-//		this.itemId = itemId;
-//		this.itemName = itemName;
-//		this.unitPrice = unitPrice;
-//		this.quantity = quantity;
-//		this.qtyAmount= qtyAmount;
+	public ShopItem(int itemId, String itemName, double unitPrice, int quantity) {
+	  
+		this.itemId = itemId;
+		this.itemName = itemName;
+		this.unitPrice = unitPrice;
+		this.quantity = quantity;
+		
 	}
 
 	public int getitemId() {
@@ -66,14 +66,6 @@ public class ShopItem {
 		return unitPrice * quantity;
 	}
 	
-	public void addItem(ShopItem item) {
-	    Gson gson = new Gson();
-	    try (FileWriter writer = new FileWriter("items.json")) {
-	      gson.toJson(item, writer);
-	    } catch (IOException e) {
-	      e.printStackTrace();
-	    }
-	}
 	
 	  public void deleteItem(int itemId) {
 		    Gson gson = new Gson();
