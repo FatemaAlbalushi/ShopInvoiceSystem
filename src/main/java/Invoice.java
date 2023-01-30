@@ -1,21 +1,17 @@
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.google.gson.Gson;
-
 /**
- * @author LAP-10
+ * 
  *
  */
 public class Invoice {
-	
-	
 	    private int InvoiceId;
 	    private Customer customer;
 	    private Date date;
 	    private ArrayList<ShopItem> items;
+	    private Shop shop;
+	    private float paidAmount;
 	  
 
 	    public Invoice(int InvoiceId, Date date) {
@@ -63,7 +59,7 @@ public class Invoice {
 	        return totalAmount;
 	    }
 
-	    private float paidAmount;
+	    
 
 	    public float getPaidAmount() {
 	        return paidAmount;
@@ -76,21 +72,18 @@ public class Invoice {
 	    public float getBalance() {
 	        return getTotalAmount() - paidAmount;
 	    }
-
-		public void saveToFile() {
-			// TODO Auto-generated method stub
-			 Gson gson = new Gson();
-		        String json = gson.toJson(this);
-
-		        try (FileWriter writer = new FileWriter("invoice.json")) {
-		            gson.toJson(this, writer);
-		        } catch (IOException e) {
-		            e.printStackTrace();
-		        }
-			
-		}
-
-	 
 	    
+
+	    public void setInvoiceHeader(Shop shop) {
+		    this.shop = shop;
+		  }
+
+		  public Shop getShop() {
+		    return shop;
+		  }
+
+		  public void setShop(Shop shop) {
+		    this.shop = shop;
+		  }	    
 
 }
