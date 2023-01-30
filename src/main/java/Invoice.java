@@ -1,5 +1,9 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+
+import com.google.gson.Gson;
 
 /**
  * @author LAP-10
@@ -8,24 +12,23 @@ import java.util.Date;
 public class Invoice {
 	
 	
-	    private int id;
+	    private int InvoiceId;
 	    private Customer customer;
 	    private Date date;
 	    private ArrayList<ShopItem> items;
+	  
 
-	    public Invoice(int id, Customer customer, Date date, ArrayList<ShopItem> items) {
-	        this.id = id;
-	        this.customer = customer;
+	    public Invoice(int InvoiceId, Date date) {
+	        this.InvoiceId = InvoiceId;
 	        this.date = date;
-	        this.items = items;
 	    }
 
-	    public int getId() {
-	        return id;
+	    public int getInvoiceId() {
+	        return InvoiceId;
 	    }
 
-	    public void setId(int id) {
-	        this.id = id;
+	    public void setInvoiceId(int InvoiceId) {
+	        this.InvoiceId = InvoiceId;
 	    }
 
 	    public Customer getCustomer() {
@@ -55,7 +58,7 @@ public class Invoice {
 	    public float getTotalAmount() {
 	        float totalAmount = 0;
 	        for (ShopItem item : items) {
-	            totalAmount += item.getAmount();
+	            totalAmount += item.getQtyAmount();
 	        }
 	        return totalAmount;
 	    }
@@ -74,5 +77,20 @@ public class Invoice {
 	        return getTotalAmount() - paidAmount;
 	    }
 
+		public void saveToFile() {
+			// TODO Auto-generated method stub
+			 Gson gson = new Gson();
+		        String json = gson.toJson(this);
+
+		        try (FileWriter writer = new FileWriter("invoice.json")) {
+		            gson.toJson(this, writer);
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+			
+		}
+
+	 
+	    
 
 }

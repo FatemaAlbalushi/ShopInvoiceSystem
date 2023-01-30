@@ -1,4 +1,5 @@
 import java.lang.StackWalker.Option;
+import java.util.Date;
 import java.util.Scanner;
 
 
@@ -131,6 +132,9 @@ public class InvoiceSystemMain {
                 break;
             case 3:
                 System.out.println("Create New Invoice");
+                Date date = new Date();
+                Invoice invoice = new Invoice(1, date);
+                invoice.saveToFile();
                 break;
             case 4:
                 System.out.println("Report - Statistics");
