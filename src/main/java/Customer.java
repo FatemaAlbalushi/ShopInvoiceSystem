@@ -1,41 +1,76 @@
 
 /**
- * @author LAP-10
- *
+ * Class to represent a customer object
  */
 public class Customer {
-	private int id;
-	private String name;
-	private String phoneNumber;
+	// Private instance variable for the customer's id
+	private int Customerid;
+	
+	// Private instance variable for the customer's name
+	private String Customername;
+	
+	// Private instance variable for the customer's phone number
+	private String CustomerphoneNumber;
 
-	public Customer(int id, String name, String phoneNumber) {
-		this.id = id;
-		this.name = name;
-		this.phoneNumber = phoneNumber;
+	/**
+	 * Constructor to create a new customer object
+	 * @param Ccustomerid the customer's id
+	 * @param customername the customer's name
+	 * @param customerphoneNumber the customer's phone number
+	 */
+	public Customer(int Ccustomerid, String customername, String customerphoneNumber) {
+		// Assign the parameter values to the instance variables
+		this.Customerid = Ccustomerid;
+		this.Customername = customername;
+		this.CustomerphoneNumber = customerphoneNumber;
 	}
 
+	/**
+	 * Getter method for the customer's id
+	 * @return the customer's id
+	 */
 	public int getId() {
-		return id;
+		return Customerid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	/**
+	 * Setter method for the customer's id
+	 * @param Ccustomerid the new customer's id
+	 */
+	public void setId(int Ccustomerid) {
+		this.Customerid = Ccustomerid;
 	}
 
+	/**
+	 * Getter method for the customer's name
+	 * @return the customer's name
+	 */
 	public String getName() {
-		return name;
+		return Customername;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	/**
+	 * Setter method for the customer's name
+	 * @param customername the new customer's name
+	 */
+	public void setName(String customername) {
+		this.Customername = customername;
 	}
 
+	/**
+	 * Getter method for the customer's phone number
+	 * @return the customer's phone number
+	 */
 	public String getPhoneNumber() {
-		return phoneNumber;
+		return CustomerphoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	/**
+	 * Setter method for the customer's phone number
+	 * @param customerphoneNumber the new customer's phone number
+	 */
+	public void setPhoneNumber(String customerphoneNumber) {
+		this.CustomerphoneNumber = customerphoneNumber;
 	}
 
 }
