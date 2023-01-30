@@ -77,7 +77,7 @@ public class Shop {
 		int itemQuantity = userInput.nextInt();
 
 		ShopItem shopItem1 = new ShopItem(itemId, itemName, itemPrice, itemQuantity);
-		//shopitemlist.add(shopItem1);
+		shopitemlist.add(shopItem1);
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		try (FileWriter writer = new FileWriter("items.json")) {
