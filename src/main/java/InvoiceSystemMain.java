@@ -14,7 +14,9 @@ public class InvoiceSystemMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Application Main Menu:");
-		//System.out.println();
+		
+		
+		ShopItem item = new ShopItem();
 		
 		Menu subMenuAdminAction1 = new Menu();
 		subMenuAdminAction1.addMenuitem(new MenuItem(1, "Load Data"));
@@ -52,6 +54,16 @@ public class InvoiceSystemMain {
         System.out.println("Please Enter Your choice: ");
         Integer choice = Integer.parseInt(userInput.nextLine());
         
+//        while (choice == null) {
+//            System.out.println("Enter your choice: ");
+//            try {
+//                choice = Integer.parseInt(userInput.nextLine());
+//            } catch (NumberFormatException e) {
+//                System.out.println("Invalid input. Please enter a valid integer.");
+//            }
+//        }
+        
+        
         
         if (choice==1) {
         	
@@ -60,8 +72,41 @@ public class InvoiceSystemMain {
 		}
         
         else if (choice==2) {
-        	
-			patentMenu.getMenuItem(2).menu.printMenuitem();
+        	patentMenu.getMenuItem(2).menu.printMenuitem();
+        	Scanner sc = new Scanner(System.in);
+            int option;
+			
+			do {
+		        option = sc.nextInt();
+		        switch (option) {
+		            case 1:
+		            	System.out.println("Enter item id: ");
+		                int itemId = sc.nextInt();
+		                System.out.println("Enter item name: ");
+		                String itemName = sc.next();
+		                System.out.println("Enter item price: ");
+		                double itemPrice = sc.nextDouble();
+		                System.out.println("Enter item quantity: ");
+		                int itemQuantity = sc.nextInt();
+		              //  item.addItem(itemId, itemName, itemPrice, itemQuantity);
+		            	//ShopItem.addItem(item);
+		                break;
+		            case 2:
+		            //	ShopItem.deleteItem();
+		                break;
+		            case 3:
+		            //	ShopItem.changeItemPrice();
+		                break;
+		            case 4:
+		            	//ShopItem.reportAllItems();
+		                break;
+		            case 5:
+		                break;
+		            default:
+		                System.out.println("Invalid option");
+		                break;
+		        }
+		    } while (option != 5);
 			
 		}
         
@@ -70,5 +115,7 @@ public class InvoiceSystemMain {
         System.out.println("Application Ended");
 	}
 
+	
+	
 }
 
