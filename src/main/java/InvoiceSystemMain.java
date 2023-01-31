@@ -47,7 +47,7 @@ public class InvoiceSystemMain {
         ApplicationMainMenu.addMenuitem(new MenuItem(7, "Program Statistics   Not Implemented... "));
         ApplicationMainMenu.addMenuitem(new MenuItem(8, "Exit"));
      
-      //Code to implement the main menu for a shop
+     
      // Initialize choice and option
         Integer choice;
         Integer option;
