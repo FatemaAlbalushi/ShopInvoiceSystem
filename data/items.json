@@ -10,5 +10,11 @@
     "itemName": "banana",
     "unitPrice": 3.3,
     "quantity": 6
+  },
+  {
+    "itemId": 3,
+    "itemName": "apple",
+    "unitPrice": 0.2,
+    "quantity": 33
   }
 ]

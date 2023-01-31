@@ -57,67 +57,157 @@ public class Shop {
 		System.out.print("Enter the new shop name: ");
 		this.Shopname = newShopName;
 	}
-
+	
+	/**
+	 * Saves the details of a Shop object to a file using Gson library.
+	 *
+	 * @param shop The Shop object to be saved.
+	 * @param fileName The name of the file to which the details of the Shop object will be saved.
+	 */
 	public void saveShopDetails(Shop shop, String fileName) {
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		try (FileWriter writer = new FileWriter(fileName)) {
-			gson.toJson(shop, writer);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	    // Create a Gson object with pretty printing enabled.
+	    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+	    try (FileWriter writer = new FileWriter(fileName)) {
+	        // Convert the Shop object to a JSON string and write it to the file.
+	        gson.toJson(shop, writer);
+	    } catch (IOException e) {
+	        // Print the stack trace of the IOException if it occurs.
+	        e.printStackTrace();
+	    }
 	}
 
-	public  void addItem() {
-	   final String itemsListFile = "data/items.json";
-	        File itemsFile = new File(itemsListFile);
-	        try {
-	            if (!itemsFile.exists()) {
-	                itemsFile.createNewFile();
-	            }
-	        } catch (IOException e) {
-	            System.out.println("Error creating file: " + e.getMessage());
+//	public  void addItem() {
+//	   final String itemsListFile = "data/items.json";
+//	        File itemsFile = new File(itemsListFile);
+//	        try {
+//	            if (!itemsFile.exists()) {
+//	                itemsFile.createNewFile();
+//	            }
+//	        } catch (IOException e) {
+//	            System.out.println("Error creating file: " + e.getMessage());
+//	            return;
+//	        }
+//		Scanner userInput = new Scanner(System.in);
+//		System.out.println("Enter item id: ");
+//		int itemId = userInput.nextInt();
+//
+//		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//		   Type type = new TypeToken<List<ShopItem>>(){}.getType();
+//		   List<ShopItem> items = new ArrayList<>();
+//
+//		   try (FileReader reader = new FileReader("data/items.json")) {
+//		      items = gson.fromJson(reader, type);
+//		   } catch (IOException e) {
+//		      e.printStackTrace();
+//		   }
+//
+//		   for (ShopItem item : items) {
+//		      if (item.getitemId() == itemId) {
+//		         System.out.println("Item with id " + itemId + " already exists.");
+//		         return;
+//		      }
+//		   }
+//		   
+//		System.out.println("Enter item name: ");
+//		String itemName = userInput.next();
+//
+//		System.out.println("Enter item price: ");
+//		double itemPrice = userInput.nextDouble();
+//
+//		System.out.println("Enter item quantity: ");
+//		int itemQuantity = userInput.nextInt();
+//		ShopItem shopItem1 = new ShopItem(itemId, itemName, itemPrice, itemQuantity);
+//		items.add(shopItem1);
+//
+//		try (FileWriter writer = new FileWriter("data/items.json")) {
+//			gson.toJson(items, writer);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//	}
+	public void addItem() {
+	    // Define the file name for the items list
+	    final String itemsListFile = "data/items.json";
+	    // Create a File object for the items list file
+	    File itemsFile = new File(itemsListFile);
+
+	    // Try to create the file if it doesn't exist
+	    try {
+	        if (!itemsFile.exists()) {
+	            itemsFile.createNewFile();
+	        }
+	    } catch (IOException e) {
+	        // Print an error message if there was an issue creating the file
+	        System.out.println("Error creating file: " + e.getMessage());
+	        // Return from the method to stop execution
+	        return;
+	    }
+
+	    // Create a Scanner to get user input
+	    Scanner userInput = new Scanner(System.in);
+
+	    // Ask for the item id
+	    System.out.println("Enter item id: ");
+	    int itemId = userInput.nextInt();
+
+	    // Create a Gson object for serializing and deserializing JSON
+	    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	    // Define the type for the items list
+	    Type type = new TypeToken<List<ShopItem>>(){}.getType();
+	    // Create an empty items list
+	    List<ShopItem> items = new ArrayList<>();
+
+	    // Try to read the items list from the file
+	    try (FileReader reader = new FileReader("data/items.json")) {
+	        // Deserialize the JSON data into the items list
+	        items = gson.fromJson(reader, type);
+	    } catch (IOException e) {
+	        // Print the error message if there was an issue reading the file
+	        e.printStackTrace();
+	    }
+
+	    // Check if the item with the same id already exists in the items list
+	    for (ShopItem item : items) {
+	        if (item.getitemId() == itemId) {
+	            // Print a message if the item already exists and return from the method
+	            System.out.println("Item with id " + itemId + " already exists.");
 	            return;
 	        }
-		Scanner userInput = new Scanner(System.in);
-		System.out.println("Enter item id: ");
-		int itemId = userInput.nextInt();
+	    }
 
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		   Type type = new TypeToken<List<ShopItem>>(){}.getType();
-		   List<ShopItem> items = new ArrayList<>();
+	    // Ask for the item name
+	    System.out.println("Enter item name: ");
+	    String itemName = userInput.next();
 
-		   try (FileReader reader = new FileReader("data/items.json")) {
-		      items = gson.fromJson(reader, type);
-		   } catch (IOException e) {
-		      e.printStackTrace();
-		   }
+	    // Ask for the item price
+	    System.out.println("Enter item price: ");
+	    double itemPrice = userInput.nextDouble();
 
-		   for (ShopItem item : items) {
-		      if (item.getitemId() == itemId) {
-		         System.out.println("Item with id " + itemId + " already exists.");
-		         return;
-		      }
-		   }
-		   
-		System.out.println("Enter item name: ");
-		String itemName = userInput.next();
+	    // Ask for the item quantity
+	    System.out.println("Enter item quantity: ");
+	    int itemQuantity = userInput.nextInt();
 
-		System.out.println("Enter item price: ");
-		double itemPrice = userInput.nextDouble();
+	    // Create a new ShopItem object with the obtained information
+	    ShopItem shopItem = new ShopItem(itemId, itemName, itemPrice, itemQuantity);
+	    // Add the new ShopItem to the items list
+	    items.add(shopItem);
 
-		System.out.println("Enter item quantity: ");
-		int itemQuantity = userInput.nextInt();
-		ShopItem shopItem1 = new ShopItem(itemId, itemName, itemPrice, itemQuantity);
-		items.add(shopItem1);
-
-		try (FileWriter writer = new FileWriter("data/items.json")) {
-			gson.toJson(items, writer);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+	    // Try to write the updated items list back to the file
+	    try (FileWriter writer = new FileWriter("data/items.json")) {
+	        // Serialize the items list into JSON and write it to the file
+	        gson.toJson(items, writer);
+	    } catch (IOException e) {
+	        // Print the error message if there was an issue writing to the file
+	        e.printStackTrace();
+	    }
 	}
 
+
+	
+	
+	
 	public void loadItems() {
 			    Gson gson = new Gson();
 			    Type type = new TypeToken<List<ShopItem>>(){}.getType();
@@ -162,26 +252,7 @@ public class Shop {
 		}
 
 	
-	
-	
-//	 public void changeItemPrice(int itemId, double newPrice) {
-//		    Gson gson = new Gson();
-//		    Type type = new TypeToken<List<ShopItem>>(){}.getType();
-//		    try (FileReader reader = new FileReader("items.json")) {
-//		      List<ShopItem> items = gson.fromJson(reader, type);
-//		      for (ShopItem item : items) {
-//		        if (item.getitemId() == itemId) {
-//		          item.setUnitPrice(newPrice);
-//		          break;
-//		        }
-//		      }
-//		      try (FileWriter writer = new FileWriter("items.json")) {
-//		        gson.toJson(items, writer);
-//		      }
-//		    } catch (IOException e) {
-//		      e.printStackTrace();
-//		    }
-//		  }
+
 	
 	public static void changeItemPrice(int itemId, double newPrice) {
 		  //Gson gson = new Gson();
