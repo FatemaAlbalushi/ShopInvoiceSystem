@@ -23,7 +23,7 @@ public class InvoiceSystemMain {
 		Menu ShopSettingssubMenu = new Menu();
 		ShopSettingssubMenu.addMenuitem(new MenuItem(1, "Load Data"));
 		ShopSettingssubMenu.addMenuitem(new MenuItem(2, "Set Shop Name"));
-		ShopSettingssubMenu.addMenuitem(new MenuItem(3, "Set Invoice Header"));
+		ShopSettingssubMenu.addMenuitem(new MenuItem(3, "Set Invoice Header   Not Implemented..."));
 		ShopSettingssubMenu.addMenuitem(new MenuItem(4, "Go Back"));
 		
 		Menu ManageShopItemssubMenu = new Menu();
@@ -43,11 +43,11 @@ public class InvoiceSystemMain {
         Menu ApplicationMainMenu = new Menu();
         ApplicationMainMenu.addMenuitem(ShopSettingsMenu);
         ApplicationMainMenu.addMenuitem(ManageShopItemsMenu);
-        ApplicationMainMenu.addMenuitem(new MenuItem(3, "Create New Invoice"));
-        ApplicationMainMenu.addMenuitem(new MenuItem(4, "Report: Statistics"));
-        ApplicationMainMenu.addMenuitem(new MenuItem(5, "Report: All Invoices"));
-        ApplicationMainMenu.addMenuitem(new MenuItem(6, "Search for Invoice"));
-        ApplicationMainMenu.addMenuitem(new MenuItem(7, "Program Statistics "));
+        ApplicationMainMenu.addMenuitem(new MenuItem(3, "Create New Invoice   Not Implemented..."));
+        ApplicationMainMenu.addMenuitem(new MenuItem(4, "Report: Statistics   Not Implemented..."));
+        ApplicationMainMenu.addMenuitem(new MenuItem(5, "Report: All Invoices Not Implemented..."));
+        ApplicationMainMenu.addMenuitem(new MenuItem(6, "Search for Invoice   Not Implemented..."));
+        ApplicationMainMenu.addMenuitem(new MenuItem(7, "Program Statistics   Not Implemented... "));
         ApplicationMainMenu.addMenuitem(new MenuItem(8, "Exit"));
         //patentMenu.printMenuitem();
         
@@ -80,13 +80,15 @@ public class InvoiceSystemMain {
                     switch (option) {
                     case 1:
                     	 System.out.println("Load Data");
+                    	 shop.loadItems();
+                    	 
                         break;
                     case 2:
                     	 System.out.println("Set Shop Name");
                     	 shop.SetShopName();
                         break;
                     case 3:
-                    	 System.out.println("Set Invoice Header");
+                    	 System.out.println("Set Invoice Header Not Implemented...");
                     	 
                         break;
                     case 4:
@@ -100,7 +102,7 @@ public class InvoiceSystemMain {
                 break;
             case 2:
                 do {
-                    System.out.println("Shop Settings");
+                    System.out.println("Manage Shop Items");
                     ApplicationMainMenu.getMenuItem(2).menu.printMenuitem();
                     System.out.print("Enter your Choice : ");
                     option = Integer.parseInt(userInput.nextLine());
@@ -111,16 +113,36 @@ public class InvoiceSystemMain {
 	                break;
 	            case 2:
 	            	System.out.println("Delete Items");
-	            	shop.loadItems();
-	            //	ShopItem.deleteItem();
+	            	System.out.print("Enter Item Id : ");
+	                int input = 0;
+	                try {
+	                	input = Integer.parseInt(userInput.nextLine());
+	                } catch (NumberFormatException e) {
+	                    System.out.println("Invalid input. Enter a number.");
+	                   
+	                }
+	            	shop.deleteItem(input);
+	         
 	                break;
 	            case 3:
 	            	System.out.println("Change Item Price");
-	            //	ShopItem.changeItemPrice();
+	            	System.out.print("Enter Item Id : ");
+	                int id = 0;
+	                try {
+	                	id = Integer.parseInt(userInput.nextLine());
+	                } catch (NumberFormatException e) {
+	                    System.out.println("Invalid input. Enter a number.");
+	                   
+	                }
+	                System.out.println("Enter item price: ");
+	        		double price = Double.parseDouble(userInput.nextLine()) ;
+	               
+	           
+	                Shop.changeItemPrice(id,price);
 	                break;
 	            case 4:
 	            	System.out.println("Report All Items");
-	            	//ShopItem.reportAllItems();
+	            	shop.loadItems();
 	                break;
                     case 5:
                         System.out.println("Going Back...");
@@ -132,20 +154,20 @@ public class InvoiceSystemMain {
                 } while (option != 5);
                 break;
             case 3:
-                System.out.println("Create New Invoice");
+                System.out.println("Create New Invoice   Not Implemented..." );
                // Shop.addInvoice();
                 break;
             case 4:
-                System.out.println("Report - Statistics");
+                System.out.println("Report - Statistics  Not Implemented...");
                 break;
             case 5:
-                System.out.println("Report - All Invoices");
+                System.out.println("Report - All Invoices  Not Implemented...");
                 break;
             case 6:
-                System.out.println("Search Invoice");
+                System.out.println("Search Invoice  Not Implemented...");
                 break;
             case 7:
-                System.out.println("Program Statistics");
+                System.out.println("Program Statistics  Not Implemented...");
                 break;
             case 8:
             	while (choice == 8) {
