@@ -16,9 +16,7 @@ public class InvoiceSystemMain {
 		
 		Shop shop= new Shop("fruit Shop", "99999998", "24000023", "fruitShop@gamil.com", "fruit.com");
 		System.out.println("Application Main Menu:");
-		
-		
-		//ShopItem item = new ShopItem();
+	
 		
 		Menu ShopSettingssubMenu = new Menu();
 		ShopSettingssubMenu.addMenuitem(new MenuItem(1, "Load Data"));
@@ -49,7 +47,7 @@ public class InvoiceSystemMain {
         ApplicationMainMenu.addMenuitem(new MenuItem(6, "Search for Invoice   Not Implemented..."));
         ApplicationMainMenu.addMenuitem(new MenuItem(7, "Program Statistics   Not Implemented... "));
         ApplicationMainMenu.addMenuitem(new MenuItem(8, "Exit"));
-        //patentMenu.printMenuitem();
+       
         
         Integer choice;
         Integer option;
@@ -80,12 +78,15 @@ public class InvoiceSystemMain {
                     switch (option) {
                     case 1:
                     	 System.out.println("Load Data");
-                    	 shop.loadItems();
+                    	 shop.loadShopDetails();
+                    	 
                     	 
                         break;
                     case 2:
                     	 System.out.println("Set Shop Name");
-                    	 //shop.SetShopName();
+                    	 shop.setShopName();
+                    	 shop.saveShopDetails(shop);
+                    	 
                         break;
                     case 3:
                     	 System.out.println("Set Invoice Header Not Implemented...");
