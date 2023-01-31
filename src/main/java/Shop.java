@@ -367,7 +367,9 @@ public class Shop {
 
 
 
-
+/**
+ * This method for Add Invoice and save it to a json file named invoices 
+ */
 
 	public void addInvoice() {
 		
