@@ -85,7 +85,7 @@ public class InvoiceSystemMain {
                         break;
                     case 2:
                     	 System.out.println("Set Shop Name");
-                    	 shop.SetShopName();
+                    	 //shop.SetShopName();
                         break;
                     case 3:
                     	 System.out.println("Set Invoice Header Not Implemented...");

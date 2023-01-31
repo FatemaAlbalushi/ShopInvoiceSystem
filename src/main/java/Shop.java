@@ -280,34 +280,48 @@ public class Shop {
 		}
 }
 
+	
+	/**
+	 *  Changes the price of a shop item in "data/items.json" file
+	 * @param itemId
+	 * @param newPrice
+	 */
+	public static void changeItemPrice(int itemId, double newPrice) {
+	    // Creates a Gson object for JSON handling with pretty printing
+	    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	    // Defines the type for the List of ShopItem objects
+	    Type type = new TypeToken<List<ShopItem>>(){}.getType();
+	    
+	    // Tries to read the items file using a FileReader and JSON deserialization
+	    try (FileReader reader = new FileReader("data/items.json")) {
+	        List<ShopItem> items = gson.fromJson(reader, type);
+	        // Flag to keep track of item existence
+	        boolean itemExists = false;
+	        // Loops through the items to find the matching id
+	        for (ShopItem item : items) {
+	            if (item.getitemId() == itemId) {
+	                itemExists = true;
+	                // Changes the item's price
+	                item.setUnitPrice(newPrice);
+	                break;
+	            }
+	        }
+	        // If item does not exist, prints a message
+	        if (!itemExists) {
+	            System.out.println("Item with id " + itemId + " not found.");
+	            return;
+	        }
+	        // Tries to write the updated items list to the file using a FileWriter and JSON serialization
+	        try (FileWriter writer = new FileWriter("data/items.json")) {
+	            gson.toJson(items, writer);
+	        }
+	    } catch (IOException e) {
+	        // Prints the stack trace for any IOExceptions
+	        e.printStackTrace();
+	    }
+	}
 
 	
-	public static void changeItemPrice(int itemId, double newPrice) {
-		  //Gson gson = new Gson();
-		  Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		  Type type = new TypeToken<List<ShopItem>>(){}.getType();
-		  try (FileReader reader = new FileReader("data/items.json")) {
-		    List<ShopItem> items = gson.fromJson(reader, type);
-		    boolean itemExists = false;
-		    for (ShopItem item : items) {
-		      if (item.getitemId() == itemId) {
-		        itemExists = true;
-		        item.setUnitPrice(newPrice);
-		        break;
-		      }
-		    }
-		    if (!itemExists) {
-		      System.out.println("Item with id " + itemId + " not found.");
-		      return;
-		    }
-		    try (FileWriter writer = new FileWriter("data/items.json")) {
-		      gson.toJson(items, writer);
-		    }
-		  } catch (IOException e) {
-		    e.printStackTrace();
-		  }
-		}
-
 	
 	public void addInvoice() {
 		
