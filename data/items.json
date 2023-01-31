@@ -1,0 +1,20 @@
+[
+  {
+    "itemId": 2,
+    "itemName": "banana",
+    "unitPrice": 0.7,
+    "quantity": 25
+  },
+  {
+    "itemId": 3,
+    "itemName": "apple",
+    "unitPrice": 0.5,
+    "quantity": 20
+  },
+  {
+    "itemId": 4,
+    "itemName": "orange",
+    "unitPrice": 1.5,
+    "quantity": 92
+  }
+]

@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
@@ -8,6 +10,8 @@ import java.util.Scanner;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 
 public class Shop {
 	String Shopname;
@@ -62,7 +66,17 @@ public class Shop {
 		}
 	}
 
-	public static void addItem(ShopItem shopItem) {
+	public  void addItem() {
+	   final String itemsListFile = "data/items.json";
+	        File itemsFile = new File(itemsListFile);
+	        try {
+	            if (!itemsFile.exists()) {
+	                itemsFile.createNewFile();
+	            }
+	        } catch (IOException e) {
+	            System.out.println("Error creating file: " + e.getMessage());
+	            return;
+	        }
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("Enter item id: ");
 		int itemId = userInput.nextInt();
@@ -80,15 +94,41 @@ public class Shop {
 		shopitemlist.add(shopItem1);
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		try (FileWriter writer = new FileWriter("items.json")) {
-			gson.toJson(shopItem1, writer);
+		try (FileWriter writer = new FileWriter("data/items.json")) {
+			gson.toJson(shopitemlist, writer);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
 
-	public void addInvoice(Invoice invoice) {
+	public void loadItems() {
+	    final String itemsListFile = "data/items.json";
+	    File itemsFile = new File(itemsListFile);
+	    if (!itemsFile.exists()) {
+	        System.out.println("File not found: " + itemsListFile);
+	        return;
+	    }
+	    Gson gson = new Gson();
+	    try (FileReader reader = new FileReader(itemsListFile)) {
+	        Type type = new TypeToken<ArrayList<ShopItem>>(){}.getType();
+	        shopitemlist = gson.fromJson(reader, type);
+	    } catch (IOException e) {
+	        System.out.println("Error reading file: " + e.getMessage());
+	    }
+	}
+	public void addInvoice() {
+		
+		 final String itemsListFile = "data/invoices.json";
+	        File itemsFile = new File(itemsListFile);
+	        try {
+	            if (!itemsFile.exists()) {
+	                itemsFile.createNewFile();
+	            }
+	        } catch (IOException e) {
+	            System.out.println("Error creating file: " + e.getMessage());
+	            return;
+	        }
 
 		Scanner userInput = new Scanner(System.in);
 
@@ -109,7 +149,7 @@ public class Shop {
 		invoices.add(invoice1);
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		try (FileWriter writer = new FileWriter("invoices.json")) {
+		try (FileWriter writer = new FileWriter("data/invoices.json")) {
 			gson.toJson(invoice1, writer);
 		} catch (IOException e) {
 			e.printStackTrace();

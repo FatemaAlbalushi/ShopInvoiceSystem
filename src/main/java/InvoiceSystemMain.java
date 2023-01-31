@@ -14,8 +14,7 @@ public class InvoiceSystemMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Shop shop= new Shop("grocerie Shop", "91234567", "24412345", "grocerieShop@gamil.com", "grocerie.com");
-		Invoice invoice = null;
+		Shop shop= new Shop("fruit Shop", "99999998", "24000023", "fruitShop@gamil.com", "fruit.com");
 		System.out.println("Application Main Menu:");
 		
 		
@@ -80,10 +79,15 @@ public class InvoiceSystemMain {
                     }
                     switch (option) {
                     case 1:
+                    	 System.out.println("Load Data");
                         break;
                     case 2:
+                    	 System.out.println("Set Shop Name");
+                    	 shop.SetShopName();
                         break;
                     case 3:
+                    	 System.out.println("Set Invoice Header");
+                    	 
                         break;
                     case 4:
                         System.out.println("Going Back...");
@@ -102,15 +106,20 @@ public class InvoiceSystemMain {
                     option = Integer.parseInt(userInput.nextLine());
                     switch (option) {
 		            case 1:
-	            	
+		            	System.out.println("Add Item");
+		            	shop.addItem();
 	                break;
 	            case 2:
+	            	System.out.println("Delete Items");
+	            	shop.loadItems();
 	            //	ShopItem.deleteItem();
 	                break;
 	            case 3:
+	            	System.out.println("Change Item Price");
 	            //	ShopItem.changeItemPrice();
 	                break;
 	            case 4:
+	            	System.out.println("Report All Items");
 	            	//ShopItem.reportAllItems();
 	                break;
                     case 5:
@@ -124,7 +133,7 @@ public class InvoiceSystemMain {
                 break;
             case 3:
                 System.out.println("Create New Invoice");
-              //  Shop.addInvoice(null);
+               // Shop.addInvoice();
                 break;
             case 4:
                 System.out.println("Report - Statistics");
