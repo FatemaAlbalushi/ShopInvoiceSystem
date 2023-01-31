@@ -3,21 +3,22 @@ import java.util.Scanner;
 
 
 /**
- * @author LAP-10
- *
+ * Main class for the Invoice System
+ * 
  */
 public class InvoiceSystemMain {
 
 	/**
-	 * @param args
+	 * Main method that runs the program
+	 * @param args command line arguments
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
+		// Create a shop object
 		Shop shop= new Shop("fruit Shop", "99999998", "24000023", "fruitShop@gamil.com", "fruit.com");
 		System.out.println("Application Main Menu:");
 	
-		
+		// Create sub menus for Shop Settings and Manage Shop Items
 		Menu ShopSettingssubMenu = new Menu();
 		ShopSettingssubMenu.addMenuitem(new MenuItem(1, "Load Data"));
 		ShopSettingssubMenu.addMenuitem(new MenuItem(2, "Set Shop Name"));
@@ -31,13 +32,14 @@ public class InvoiceSystemMain {
 		ManageShopItemssubMenu.addMenuitem(new MenuItem(4, "Report All Items"));
 		ManageShopItemssubMenu.addMenuitem(new MenuItem(5, "Go Back"));
 		
+		// Create menu items for Shop Settings and Manage Shop Items
 		MenuItem ShopSettingsMenu= new MenuItem(1, "Shop Settings");
 		ShopSettingsMenu.marktheItemAsMenu(ShopSettingssubMenu);
 		
 		MenuItem ManageShopItemsMenu= new MenuItem(2, "Manage Shop Items");
 		ManageShopItemsMenu.marktheItemAsMenu(ManageShopItemssubMenu);
 		
-		
+		// Create the main menu for the application
         Menu ApplicationMainMenu = new Menu();
         ApplicationMainMenu.addMenuitem(ShopSettingsMenu);
         ApplicationMainMenu.addMenuitem(ManageShopItemsMenu);
@@ -48,7 +50,7 @@ public class InvoiceSystemMain {
         ApplicationMainMenu.addMenuitem(new MenuItem(7, "Program Statistics   Not Implemented... "));
         ApplicationMainMenu.addMenuitem(new MenuItem(8, "Exit"));
        
-        
+     // Initialize choice and option
         Integer choice;
         Integer option;
         Scanner userInput = new Scanner(System.in);
