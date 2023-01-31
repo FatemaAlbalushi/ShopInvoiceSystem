@@ -1,7 +1,4 @@
 import java.util.Scanner;
-
-
-
 /**
  * Main class for the Invoice System
  * 
@@ -49,23 +46,29 @@ public class InvoiceSystemMain {
         ApplicationMainMenu.addMenuitem(new MenuItem(6, "Search for Invoice   Not Implemented..."));
         ApplicationMainMenu.addMenuitem(new MenuItem(7, "Program Statistics   Not Implemented... "));
         ApplicationMainMenu.addMenuitem(new MenuItem(8, "Exit"));
-       
+     
+      //Code to implement the main menu for a shop
      // Initialize choice and option
         Integer choice;
         Integer option;
         Scanner userInput = new Scanner(System.in);
+      //Loop to display main menu and handle user choices
         do {
+        	//Print main menu options
         	ApplicationMainMenu.printMenuitem();
             System.out.print("Enter your Choice : ");
             choice = 0;
+          //Try-Catch block to handle invalid inputs
             try {
                 choice = Integer.parseInt(userInput.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Enter a number.");
                 continue;
             }
+          //Switch statement to handle different options of main menu
             switch (choice) {
             case 1:
+            	//Sub-menu to handle shop settings
                 do {
                     System.out.println("Shop Settings");
                     ApplicationMainMenu.getMenuItem(1).menu.printMenuitem();
@@ -77,6 +80,7 @@ public class InvoiceSystemMain {
                         System.out.println("Invalid input. Enter a number.");
                         continue;
                     }
+                  //Switch statement to handle different options of shop settings sub-menu
                     switch (option) {
                     case 1:
                     	 System.out.println("Load Data");
@@ -104,6 +108,7 @@ public class InvoiceSystemMain {
                 } while (option != 4);
                 break;
             case 2:
+            	//Sub-menu to handle manage shop items
                 do {
                     System.out.println("Manage Shop Items");
                     ApplicationMainMenu.getMenuItem(2).menu.printMenuitem();
@@ -192,11 +197,11 @@ public class InvoiceSystemMain {
                   }
             	break;
             default:
-                System.out.println("Invalid option!!!");
+                System.out.println("Invalid option!!!"); 
                 break;
             }
         } while (choice != 8);
  
-	}
-}
+	}// Ends of main
+}//Ends of class
 
