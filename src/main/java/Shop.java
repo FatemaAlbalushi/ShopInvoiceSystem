@@ -408,5 +408,5 @@ public class Shop {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-}
+	}// Ends of addInvoice
+}// End of  the class
