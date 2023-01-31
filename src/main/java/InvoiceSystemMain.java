@@ -113,6 +113,8 @@ public class InvoiceSystemMain {
 	                break;
 	            case 2:
 	            	System.out.println("Delete Items");
+	            	System.out.println("What item you went to deleat");
+               	    shop.loadItems();
 	            	System.out.print("Enter Item Id : ");
 	                int input = 0;
 	                try {
