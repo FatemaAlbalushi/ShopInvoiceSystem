@@ -1,6 +1,6 @@
 import java.util.Scanner;
 /**
- * Main class for the Invoice System
+ * Main class for the Invoice System for shop
  * 
  */
 public class InvoiceSystemMain {
