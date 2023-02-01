@@ -19,7 +19,7 @@ public class InvoiceSystemMain {
 		Menu ShopSettingssubMenu = new Menu();
 		ShopSettingssubMenu.addMenuitem(new MenuItem(1, "Load Data"));
 		ShopSettingssubMenu.addMenuitem(new MenuItem(2, "Set Shop Name"));
-		ShopSettingssubMenu.addMenuitem(new MenuItem(3, "Set Invoice Header   Not Implemented..."));
+		ShopSettingssubMenu.addMenuitem(new MenuItem(3, "Set Invoice Header"));
 		ShopSettingssubMenu.addMenuitem(new MenuItem(4, "Go Back"));
 		
 		Menu ManageShopItemssubMenu = new Menu();
@@ -95,8 +95,9 @@ public class InvoiceSystemMain {
                     	 
                         break;
                     case 3:
-                    	 System.out.println("Set Invoice Header Not Implemented...");
-                    	 
+                    	 System.out.println("Set Invoice Header ");
+                    	 shop.InvoiceHeader(shop);
+                    	 System.out.println();
                         break;
                     case 4:
                         System.out.println("Going Back...");

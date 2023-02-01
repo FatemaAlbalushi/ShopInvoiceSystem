@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
@@ -54,13 +55,16 @@ public class Shop {
 	public Shop(String shopname) {
 		this.Shopname = shopname;
 	}
-
+	
 	/**
 	 * Setter method for setting the telephone number of the shop.
 	 * @param tel Telephone number of the shop.
 	 */
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+	public String getTel() {
+		return tel;
 	}
 
 	/**
@@ -70,6 +74,10 @@ public class Shop {
 	public void setFax(String fax) {
 		this.fax = fax;
 	}
+	
+	public String getfax() {
+		return fax;
+	}
 
 	/**
 	 * Setter method for setting the email address of the shop.
@@ -78,7 +86,10 @@ public class Shop {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	public String getemail() {
+		return email;
+	}
+	
 	/**
 	 * Setter method for setting the website of the shop.
 	 * @param website Website of the shop.
@@ -86,7 +97,9 @@ public class Shop {
 	public void setWebsite(String website) {
 		this.website = website;
 	}
-
+	public String getwebsite() {
+		return website;
+	}
 	
 	public ArrayList<ShopItem> getShopitemlist() {
 	    return shopitemlist;
@@ -363,7 +376,25 @@ public class Shop {
 	}
 
 	
-	
+	public void InvoiceHeader(Shop shop) {
+
+		HashMap<String, String> header = new HashMap<>();
+		header.put("tel", shop.getTel());
+		header.put("fax", shop.getfax());
+		header.put("email", shop.getemail());
+		header.put("website", shop.getwebsite());
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(header);
+
+		try (FileWriter writer = new FileWriter("data/Invoiceheader.json")) {
+		    writer.write(json);
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+	}
+
+
 
 
 
