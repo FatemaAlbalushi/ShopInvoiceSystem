@@ -16,5 +16,11 @@
     "itemName": "apple",
     "unitPrice": 0.2,
     "quantity": 33
+  },
+  {
+    "itemId": 4,
+    "itemName": "mango",
+    "unitPrice": 2.2,
+    "quantity": 3
   }
 ]
